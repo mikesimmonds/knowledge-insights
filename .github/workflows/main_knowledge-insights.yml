@@ -31,6 +31,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}/knowledge-insights-backend
           npm install
+          npm run build
       
       - name: Copy frontend build to backend
         run: |
