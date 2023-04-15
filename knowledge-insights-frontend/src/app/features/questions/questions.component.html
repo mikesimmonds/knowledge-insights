@@ -1,0 +1,8 @@
+<app-page-layout>
+  <h3>As a question:</h3>
+  <input type="text" #questionInput>
+  <button (click)="askQuestion(questionInput.value)">Ask</button>
+  <hr>
+  <h3>Answer:</h3>
+  <p>{{latestAnswer || "Ask a question first"}}</p>
+</app-page-layout>
