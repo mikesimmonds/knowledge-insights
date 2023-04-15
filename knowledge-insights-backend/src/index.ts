@@ -46,10 +46,10 @@ apiRouter.use("/questions", questionsRouter);
 
 
 // Set up Static routes
-staticRouter.use(express.static(path.join(__dirname, '../../knowledge-insights-frontend/dist/knowledge-insights-frontend')));
+staticRouter.use(express.static(path.join(__dirname, '../public')));
 staticRouter.use('*', function (req, res) {
   res.set('Content-Type', 'text/html')
-  res.sendFile('index.html', { root: path.join(__dirname, '../../knowledge-insights-frontend/dist/knowledge-insights-frontend') });
+  res.sendFile('index.html', { root: path.join(__dirname, '../public') });
 });
 
 // staticRouter.get('*', function (req, res) {
