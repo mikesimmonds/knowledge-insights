@@ -8,12 +8,13 @@ export const questionsRouter = express.Router();
 // removed : requiredScopes('askQuestion')
 questionsRouter.post("/ask", async (req, res) => { 
   const questionText = req.body.questionText;
+  const chat_history = req.body.chatHistory || [];
   try {
     // Get the chain instance
     console.log(`questionText: `, questionText)
     const chain = await conversationalChain;
     // use OpenAI API to get answer to basic question
-    const answer = await chain.call({ question: questionText, chat_history: [] });
+    const answer = await chain.call({ question: questionText, chat_history: chat_history });
 
     // return answer to client
     res.status(200).json(answer);

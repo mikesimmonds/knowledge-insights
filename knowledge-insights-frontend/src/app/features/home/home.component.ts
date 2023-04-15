@@ -33,7 +33,7 @@ export class HomeComponent {
   }
 
   askQuestion(questionText: string) {
-    return this.httpClient.post<{text:string}>(`${environment.api.serverUrl}/api/questions/ask`, { questionText }).pipe(map(response => response.text));
+    return this.httpClient.post<{text:string}>(`${environment.api.serverUrl}/api/questions/ask`, { questionText, chatHistory: this.chatMessages }).pipe(map(response => response.text));
   }
 
 }
