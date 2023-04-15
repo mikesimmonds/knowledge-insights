@@ -1,4 +1,13 @@
 <app-page-layout>
-  <app-hero-banner></app-hero-banner>
-  <app-auth0-features></app-auth0-features>
+  <div class="page-container">
+    <div class="chat-container">
+      <div class="chat-message" *ngFor="let message of chatMessages" [ngClass]="message.sender">
+        {{ message.text }}
+      </div>
+    </div>
+    <form (ngSubmit)="onSubmit()" class="chat-form">
+      <input [(ngModel)]="userInput" name="userInput" placeholder="Type your question..." />
+      <button type="submit">Send</button>
+    </form>
+  </div>
 </app-page-layout>

@@ -7,8 +7,16 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     loadChildren: () =>
-      import('./features/home/home.module').then((m) => m.HomeModule),
+    import('./features/home/home.module').then((m) => m.HomeModule),
   },
+  // {
+  //   path: '',
+  //   pathMatch: 'full',
+  //   loadChildren: () =>
+  //     import('./features/questions/questions.module').then(
+  //       (m) => m.QuestionsModule
+  //     ),
+  // },
   {
     path: 'profile',
     loadChildren: () =>
@@ -39,13 +47,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/callback/callback.module').then(
         (m) => m.CallbackModule
-      ),
-  },
-  {
-    path: 'questions',
-    loadChildren: () =>
-      import('./features/questions/questions.module').then(
-        (m) => m.QuestionsModule
       ),
   },
   {

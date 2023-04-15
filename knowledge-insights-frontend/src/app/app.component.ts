@@ -10,7 +10,5 @@ export class AppComponent {
   isAuth0Loading$ = this.auth.isLoading$;
 
   constructor(private auth: AuthService) {
-    console.log('startup')
-    console.log(environment.auth0.authorizationParams.redirect_uri)
   }
 }

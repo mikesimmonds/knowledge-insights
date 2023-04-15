@@ -94,6 +94,7 @@ app.use(
     methods: ["GET","POST"],
     allowedHeaders: ["Authorization", "Content-Type"],
     maxAge: 86400,
+    
   })
 );
 

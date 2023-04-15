@@ -9,12 +9,12 @@ import { Auth0ResourceModel } from '@app/core';
         <div class="page-footer-grid__info">
           <div class="page-footer-info__message">
             <p class="page-footer-message__headline">
-              <span>This sample application is brought to you by&nbsp;</span>
-              <app-page-footer-hyperlink path="https://auth0.com/"
+              <span>This application is brought to you by Mike Simmonds</span>
+              <!-- <app-page-footer-hyperlink path="https://auth0.com/"
                 >Auth0</app-page-footer-hyperlink
-              >
+              > -->
             </p>
-            <p class="page-footer-message__description">
+            <!-- <p class="page-footer-message__description">
               <app-page-footer-hyperlink
                 path="https://auth0.com/docs/quickstarts/"
               >
@@ -24,9 +24,9 @@ import { Auth0ResourceModel } from '@app/core';
                 </span>
                 <u>in less than 10 minutes</u>
               </app-page-footer-hyperlink>
-            </p>
+            </p> -->
           </div>
-          <div class="page-footer-info__button">
+          <!-- <div class="page-footer-info__button">
             <a
               id="create-account-button"
               class="button button--secondary"
@@ -36,8 +36,8 @@ import { Auth0ResourceModel } from '@app/core';
             >
               Create Free Auth0 Account
             </a>
-          </div>
-          <div class="page-footer-info__resource-list">
+          </div> -->
+          <!-- <div class="page-footer-info__resource-list">
             <div
               *ngFor="let resource of resourceList"
               class="page-footer-info__resource-list-item"
@@ -46,9 +46,9 @@ import { Auth0ResourceModel } from '@app/core';
                 {{ resource.label }}
               </app-page-footer-hyperlink>
             </div>
-          </div>
+          </div> -->
         </div>
-        <div class="page-footer-grid__brand">
+        <!-- <div class="page-footer-grid__brand">
           <div class="page-footer-brand">
             <img
               class="page-footer-brand__logo"
@@ -61,7 +61,7 @@ import { Auth0ResourceModel } from '@app/core';
               >Auth0 Inc</app-page-footer-hyperlink
             >
           </div>
-        </div>
+        </div> -->
       </div>
     </footer>
   `,
