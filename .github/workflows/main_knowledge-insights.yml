@@ -26,15 +26,17 @@ jobs:
           cd ${{ github.workspace }}/knowledge-insights-frontend
           npm install
           npm run build --if-present
-      
-      - name: Copy frontend build to backend
-        run: |
-          cp -r ${{ github.workspace }}/knowledge-insights-frontend/dist/knowledge-insights-frontend ${{ github.workspace }}/knowledge-insights-backend/public
-      
+
       - name: npm install backend
         run: |
           cd ${{ github.workspace }}/knowledge-insights-backend
           npm install
+      
+      - name: Copy frontend build to backend
+        run: |
+          mkdir ${{ github.workspace }}/knowledge-insights-backend/dist/public
+          cp -r ${{ github.workspace }}/knowledge-insights-frontend/dist/knowledge-insights-frontend ${{ github.workspace }}/knowledge-insights-backend/dist/public
+      
       
       # - name: Zip artifact for deployment
       #   run: zip release.zip ./knowledge-insights-backend -r
@@ -43,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ${{ github.workspace }}/knowledge-insights-backend
+          path: ${{ github.workspace }}/knowledge-insights-backend/dist
 
   deploy:
     runs-on: ubuntu-latest
