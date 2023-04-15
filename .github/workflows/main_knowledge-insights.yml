@@ -36,14 +36,14 @@ jobs:
           cd ${{ github.workspace }}/knowledge-insights-backend
           npm install
       
-      - name: Zip artifact for deployment
-        run: zip release.zip ./knowledge-insights-backend -r
+      # - name: Zip artifact for deployment
+      #   run: zip release.zip ./knowledge-insights-backend -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: release.zip
+          path: ${{ github.workspace }}/knowledge-insights-backend
 
   deploy:
     runs-on: ubuntu-latest
@@ -58,11 +58,11 @@ jobs:
         with:
           name: node-app
 
-      - name: unzip artifact for deployment
-        run: unzip release.zip
+      # - name: unzip artifact for deployment
+      #   run: unzip release.zip
 
-      - name: delete zip file
-        run: rm release.zip
+      # - name: delete zip file
+      #   run: rm release.zip
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
