@@ -33,7 +33,7 @@ jobs:
           npm install
       
       - name: Zip artifact for deployment
-        run: Compress-Archive release.zip ./* -r
+        run: Compress-Archive . release.zip
       
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
