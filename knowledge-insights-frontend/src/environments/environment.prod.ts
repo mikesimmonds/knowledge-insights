@@ -5,11 +5,11 @@ export const environment = {
     clientId: 'DpKe6oBAMub9MrTLGufND3S6wA30uihO',
     authorizationParams: {
       audience: 'https://hello-world.example.com',
-      redirect_uri: 'http://localhost:6060/callback',
+      redirect_uri: 'https://knowledge-insights.azurewebsites.net/callback',
     },
     errorPath: '/callback',
   },
   api: {
-    serverUrl: 'http://localhost:6060',
+    serverUrl: 'https://knowledge-insights.azurewebsites.net/',
   },
 };
