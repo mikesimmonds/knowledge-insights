@@ -34,7 +34,6 @@ jobs:
       
       - name: Copy frontend build to backend
         run: |
-          mkdir ${{ github.workspace }}/knowledge-insights-backend/dist/public
           cp -r ${{ github.workspace }}/knowledge-insights-frontend/dist/knowledge-insights-frontend ${{ github.workspace }}/knowledge-insights-backend/dist/public
       
       
