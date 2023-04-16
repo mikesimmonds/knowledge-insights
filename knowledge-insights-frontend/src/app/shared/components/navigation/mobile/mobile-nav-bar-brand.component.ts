@@ -5,16 +5,20 @@ import { Component, EventEmitter, Output } from '@angular/core';
   template: `
     <div class="mobile-nav-bar__brand">
       <a (click)="onMobileNavBarBrandClick()" routerLink="/">
-        <img
-          class="mobile-nav-bar__logo"
-          src="https://cdn.auth0.com/blog/hub/code-samples/hello-world/auth0-logo.svg"
-          alt="Auth0 shield logo"
-          width="82"
-          height="24"
-        />
+      <h1 class='nav-logo'><strong>KNOWLEDGE</strong>INSIGHTS</h1>
       </a>
     </div>
   `,
+    styles: [
+      `
+        .nav-logo {
+          color: #fff;
+          strong {
+            color: #eee;
+          }
+        }
+      `
+    ]
 })
 export class MobileNavBarBrandComponent {
   @Output() mobileNavBarBrandClick = new EventEmitter<void>();
