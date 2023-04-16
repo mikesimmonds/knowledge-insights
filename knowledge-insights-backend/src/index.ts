@@ -28,6 +28,20 @@ app.use(express.json());
 // Set json responses to have 2 spaces
 app.set("json spaces", 2);
 
+// Set up CORS
+app.use(
+  cors({
+    origin: CLIENT_ORIGIN_URL,
+    methods: ["GET","POST"],
+    allowedHeaders: ["Authorization", "Content-Type"],
+    maxAge: 86400,
+    
+  })
+);
+
+// app.use(nocache());
+
+
 // Create and set up API router
 const apiRouter = express.Router();
 app.use("/api", apiRouter);
@@ -88,15 +102,6 @@ staticRouter.use('*', function (req, res) {
 
 // app.use(nocache());
 
-app.use(
-  cors({
-    origin: CLIENT_ORIGIN_URL,
-    methods: ["GET","POST"],
-    allowedHeaders: ["Authorization", "Content-Type"],
-    maxAge: 86400,
-    
-  })
-);
 
 
 
