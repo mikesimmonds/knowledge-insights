@@ -23,7 +23,10 @@ async function createChain(): Promise<any> {
   )
   return ConversationalRetrievalQAChain.fromLLM(
     model,
-    vectorStore.asRetriever()
+    vectorStore.asRetriever(),
+    {
+      returnSourceDocuments: false
+    }
   );
 }
 
