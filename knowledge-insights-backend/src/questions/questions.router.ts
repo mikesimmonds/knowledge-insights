@@ -3,10 +3,11 @@ import { requiredScopes } from "express-oauth2-jwt-bearer";
 // import checkPermission from "../authz/check-permission";
 // import jwtCheck from "../authz/jwtCheck";
 import conversationalChain from './openai';
+import { validateAccessToken } from "../middleware/auth0.middleware";
 
 export const questionsRouter = express.Router();
 // removed : requiredScopes('askQuestion')
-questionsRouter.post("/ask", async (req, res) => { 
+questionsRouter.post("/ask", validateAccessToken, async (req, res) => { 
   const questionText = req.body.questionText;
   const chat_history = req.body.chatHistory || [];
   try {
