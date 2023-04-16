@@ -4,8 +4,9 @@ import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 interface ChatMessage {
-  text: string;
+  answer: string;
   sender: 'user' | 'gpt';
+  question?: string;
 }
 
 @Component({
@@ -24,16 +25,16 @@ export class HomeComponent {
 
   onSubmit(): void {
     if (this.userInput.trim()) {
-      this.chatMessages.push({ text: this.userInput, sender: 'user' });
+      this.chatMessages.push({ answer: this.userInput, sender: 'user' });
       this.askQuestion(this.userInput).subscribe((response) => {
-        this.chatMessages.push({ text: response, sender: 'gpt' });
+        this.chatMessages.push({ answer: response, sender: 'gpt', question: this.userInput.trim() });
       });
       this.userInput = '';
     }
   }
 
   askQuestion(questionText: string) {
-    return this.httpClient.post<{text:string}>(`${environment.api.serverUrl}/api/questions/ask`, { questionText, chatHistory: this.chatMessages }).pipe(map(response => response.text));
+    return this.httpClient.post<{text:string}>(`${environment.api.serverUrl}/api/questions/ask`, { questionText, chatHistory: this.chatMessages.map(msg => msg.answer + msg.question) }).pipe(map(response => response.text));
   }
 
 }

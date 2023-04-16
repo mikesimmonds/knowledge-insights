@@ -2,7 +2,7 @@
   <div class="page-container">
     <div class="chat-container">
       <div class="chat-message" *ngFor="let message of chatMessages" [ngClass]="message.sender">
-        {{ message.text }}
+        {{ message.answer }}
       </div>
     </div>
     <form (ngSubmit)="onSubmit()" class="chat-form">
