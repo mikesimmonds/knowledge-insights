@@ -27,14 +27,14 @@ export class HomeComponent {
     if (this.userInput.trim()) {
       this.chatMessages.push({ answer: this.userInput, sender: 'user' });
       this.askQuestion(this.userInput).subscribe((response) => {
-        this.chatMessages.push({ answer: response.text, sender: 'gpt', question: this.userInput.trim() });
+        this.chatMessages.push({ answer: response, sender: 'gpt', question: this.userInput.trim() });
       });
       this.userInput = '';
     }
   }
 
   askQuestion(questionText: string): Observable<any> {
-    return this.httpClient.post<{ text: string }>(`${environment.api.serverUrl}/api/questions/ask`, { questionText, chatHistory: this.chatMessages.map(msg => msg.answer + msg.question) })
+    return this.httpClient.post<{ text: string }>(`${environment.api.serverUrl}/api/questions/chat`, { questionText, chatHistory: this.chatMessages.map(msg => msg.answer + msg.question) })
       .pipe(
         map(response => response.text ),
         catchError(error => { 

@@ -16,7 +16,7 @@ export class QuestionsComponent {
 
 
   askQuestion(questionText: string) {
-    const req = this.httpClient.post<{text:string}>(`${environment.api.serverUrl}/api/questions/ask`, { questionText });
+    const req = this.httpClient.post<{text:string}>(`${environment.api.serverUrl}/api/questions/chat`, { questionText });
     req.subscribe((response) => {
       this.latestAnswer = response.text;
      })

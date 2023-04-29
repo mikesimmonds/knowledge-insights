@@ -4,12 +4,17 @@
 // import { ConversationalRetrievalQAChain } from "langchain/chains";
 // import { HNSWLib } from "langchain/vectorstores";
 // import { OpenAIEmbeddings } from "langchain/embeddings";
+
 const path = require('path');
+
+function createPrompt() {
+  
+}
 
 
 async function createChain(): Promise<any> {
   const { OpenAI } = await import("langchain/llms");
-  const { ConversationalRetrievalQAChain } = await import("langchain/chains");
+  const { loadQAMapReduceChain } = await import("langchain/chains");
   const { HNSWLib } = await import("langchain/vectorstores");
   const { OpenAIEmbeddings } = await import("langchain/embeddings");
 
@@ -21,16 +26,10 @@ async function createChain(): Promise<any> {
     directory,
     new OpenAIEmbeddings({ openAIApiKey: process.env.OPEN_API_KEY })
   )
-  return ConversationalRetrievalQAChain.fromLLM(
-    model,
-    vectorStore.asRetriever(),
-    {
-      returnSourceDocuments: false
-    }
-  );
+  return loadQAMapReduceChain(model)
 }
 
 // Create a singleton chain
-const chain = createChain();
+const documentChain = createChain();
 
-export default chain;
+export default documentChain;
